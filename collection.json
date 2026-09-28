@@ -1,0 +1,59 @@
+{
+  "info": {
+    "_postman_id": "a1-devbooks-collection",
+    "name": "DevBooks API - A1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Criar Autor",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Machado de Assis\",\n  \"biography\": \"Escritor brasileiro famoso.\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/authors", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["authors"] }
+      }
+    },
+    {
+      "name": "Criar Livro",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Dom Casmurro\",\n  \"release_year\": 1899,\n  \"author_id\": \"COLE_O_ID_DO_AUTOR_AQUI\"\n}"
+        },
+        "url": { "raw": "http://localhost:3000/books", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["books"] }
+      }
+    },
+    {
+      "name": "Listar Livros com Autores",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/books", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["books"] }
+      }
+    },
+    {
+      "name": "Atualizar Livro",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Dom Casmurro - Edição Especial\",\n  \"release_year\": 1900\n}"
+        },
+        "url": { "raw": "http://localhost:3000/books/COLE_O_ID_DO_LIVRO_AQUI", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["books", "COLE_O_ID_DO_LIVRO_AQUI"] }
+      }
+    },
+    {
+      "name": "Excluir Livro",
+      "request": {
+        "method": "DELETE",
+        "url": { "raw": "http://localhost:3000/books/COLE_O_ID_DO_LIVRO_AQUI", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["books", "COLE_O_ID_DO_LIVRO_AQUI"] }
+      }
+    }
+  ]
+}

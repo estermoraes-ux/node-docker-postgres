@@ -1,39 +1,23 @@
 generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = ["native", "debian-openssl-3.0.x"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  createdAt DateTime @default(now())
+model Authors {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  biography String?
+  books     Books[]
 }
 
-model Course {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String?
-  duration    Int
-  createdAt   DateTime @default(now())
-}
-
-model Author {
-  id        Int      @id @default(autoincrement())
-  name      String
-  books     Book[]
-  createdAt DateTime @default(now())
-}
-
-model Book {
-  id        Int      @id @default(autoincrement())
-  title     String
-  authorId  Int
-  author    Author   @relation(fields: [authorId], references: [id])
-  createdAt DateTime @default(now())
+model Books {
+  id           String  @id @default(uuid())
+  title        String
+  release_year Int
+  author_id    String
+  author       Authors @relation(fields: [author_id], references: [id])
 }
